@@ -161,7 +161,7 @@ cd(".git") do
       mkdir_p File.dirname(file)
       cp "../../#{file}", file
       print "#{file}..."
-      `echo "#{file}\n" | cat - #{file} |source-highlight -d -o #{file}.html --failsafe`
+      `source-highlight -d -i #{file} -o #{file}.html --failsafe`
       puts " ok"
     end
     create_opf(project, files)
