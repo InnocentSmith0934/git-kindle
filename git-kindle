@@ -12,14 +12,12 @@ def check_executables
       http://www.amazon.com/gp/feature.html?docId=1000234621
     ERR
   end
-  `which source-highlight`
+  `which highlight`
   unless $?.success?
     abort(<<-ERR.gsub(/^\s+/, ''))
-      source-highlight not found in your PATH. You can get it here:
+      highlight not found in your PATH. You can get it here:
 
-      http://www.gnu.org/software/src-highlite/source-highlight.html#Download
-
-      or use your package manager, in Debian: apt-get install source-highlight
+      http://www.andre-simon.de/doku/highlight/en/install.php
     ERR
   end
 end
@@ -161,7 +159,7 @@ cd(".git") do
       mkdir_p File.dirname(file)
       cp "../../#{file}", file
       print "#{file}..."
-      `source-highlight -d -i #{file} -o #{file}.html --failsafe`
+      `highlight -d -i #{file} -o #{file}.html --failsafe`
       puts " ok"
     end
     create_opf(project, files)
